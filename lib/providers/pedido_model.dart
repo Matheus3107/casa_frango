@@ -1,0 +1,48 @@
+import 'package:casa_frango/model/pedido.dart';
+import 'package:flutter/foundation.dart';
+
+class PedidoModel extends ChangeNotifier {
+  final Firestoreservice = FirestoreService();
+
+  String _nome;
+  String _pedidoId;
+  String _fone;
+  DateTime _data;
+  var uuid = Uuid();
+
+  String get nome => _nome;
+  String get fone => _fone;
+  DateTime get data => _data;
+
+  setNome(String pnome) {
+    _nome = pnome;
+    notifyListeners();
+  }
+
+  setFone(String pfone) {
+    _fone = pfone;
+    notifyListeners();
+  }
+
+  loadPedido(Pedido pedido) {
+    _nome = pedido.nome;
+    _fone = pedido.fone;
+    _data = pedido.data;
+    _pedidoId = pedido.pedidoId;
+  }
+
+  savePedido() {
+    if (_pedidoId == null) {
+      var novoPedido =
+          Pedido(nome: nome, fone: fone, data: data, pedidoId: uuid.v4());
+      Firestoreservice.savePedido(novoPedido);
+    } else {
+      //Update
+      var alterapedido = Pedido(nome: nome, fone: fone, data: data);
+      Firestoreservice.savePedido(alterapedido);
+    }
+    removePedido(String pedidoId) {
+      Firestoreservice.removePedido(pedidoId);
+    }
+  }
+}
