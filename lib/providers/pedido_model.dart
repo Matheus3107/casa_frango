@@ -1,5 +1,7 @@
 import 'package:casa_frango/model/pedido.dart';
+import 'package:casa_frango/services/firestore_service.dart';
 import 'package:flutter/foundation.dart';
+import 'package:uuid/uuid.dart';
 
 class PedidoModel extends ChangeNotifier {
   final Firestoreservice = FirestoreService();
@@ -7,12 +9,12 @@ class PedidoModel extends ChangeNotifier {
   String _nome;
   String _pedidoId;
   String _fone;
-  DateTime _data;
+  String _descrition;
   var uuid = Uuid();
 
   String get nome => _nome;
   String get fone => _fone;
-  DateTime get data => _data;
+  String get descrition => _descrition;
 
   setNome(String pnome) {
     _nome = pnome;
@@ -24,25 +26,31 @@ class PedidoModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  setDescrition(String pdescrition) {
+    _descrition = pdescrition;
+    notifyListeners();
+  }
+
   loadPedido(Pedido pedido) {
     _nome = pedido.nome;
     _fone = pedido.fone;
-    _data = pedido.data;
+    _descrition = pedido.descrition;
     _pedidoId = pedido.pedidoId;
   }
 
   savePedido() {
     if (_pedidoId == null) {
-      var novoPedido =
-          Pedido(nome: nome, fone: fone, data: data, pedidoId: uuid.v4());
+      var novoPedido = Pedido(
+          nome: nome, fone: fone, descrition: descrition, pedidoId: uuid.v4());
       Firestoreservice.savePedido(novoPedido);
     } else {
       //Update
-      var alterapedido = Pedido(nome: nome, fone: fone, data: data);
+      var alterapedido = Pedido(nome: nome, fone: fone, descrition: descrition);
       Firestoreservice.savePedido(alterapedido);
     }
-    removePedido(String pedidoId) {
-      Firestoreservice.removePedido(pedidoId);
-    }
+  }
+
+  removePedido(String pedidoId) {
+    Firestoreservice.removePedido(pedidoId);
   }
 }

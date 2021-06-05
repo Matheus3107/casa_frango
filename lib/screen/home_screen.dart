@@ -1,3 +1,4 @@
+import 'package:casa_frango/screen/pedido.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -45,19 +46,10 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => null),
+                  MaterialPageRoute(builder: (context) => PedidoScreen()),
                 );
               },
               child: Text("Informações"),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => null),
-                );
-              },
-              child: Text("Fizalização"),
             ),
           ],
         ),

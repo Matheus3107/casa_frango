@@ -17,12 +17,12 @@ class MyLogin extends StatelessWidget {
               ),
               TextFormField(
                 decoration: InputDecoration(
-                  hintText: 'Username',
+                  hintText: 'E-mail',
                 ),
               ),
               TextFormField(
                 decoration: InputDecoration(
-                  hintText: 'Password',
+                  hintText: 'Senha',
                 ),
                 obscureText: true,
               ),
@@ -35,7 +35,7 @@ class MyLogin extends StatelessWidget {
                   Navigator.pushReplacementNamed(context, '/home_screen');
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.blue,
+                  primary: Colors.orange,
                 ),
               ),
             ],

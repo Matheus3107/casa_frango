@@ -1,4 +1,5 @@
 import 'package:casa_frango/model/pedido.dart';
+import 'package:casa_frango/screen/edit_pedido_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,7 +19,9 @@ class PedidoScreen extends StatelessWidget {
             ),
             onPressed: () {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => null),
+                MaterialPageRoute(
+                  builder: (context) => EditPedidoScreen(),
+                ),
               );
             },
           ),
@@ -31,11 +34,11 @@ class PedidoScreen extends StatelessWidget {
                 return ListTile(
                   title: Text(pedidos[index].nome),
                   trailing: Text(pedidos[index].fone),
-                  //trailing: Text(pedidos[index].data.toString()),
+                  //trailing: Text(pedidos[index].descrition),
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => EditProdutoScreen(pedidos[index]),
+                        builder: (context) => EditPedidoScreen(),
                       ),
                     );
                   },
