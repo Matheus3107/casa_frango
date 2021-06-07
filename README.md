@@ -1,6 +1,6 @@
 # casa_frango
 
-A new Flutter project.
+Projeto desenvolvido em flutter, usando o Firebase como base de dados.
 
 ## Getting Started
 
