@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => null),
+                  MaterialPageRoute(builder: (context) => PedidoScreen()),
                 );
               },
               child: Text("Pedidos"),
@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => PedidoScreen()),
+                  MaterialPageRoute(builder: (context) => null),
                 );
               },
               child: Text("Informações"),
